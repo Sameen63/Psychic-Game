@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hang Man</title>
+  </head>
+  <body>
+		
+		<!-- <h1>The Psychic Game</h1>
+		<h3>Guess What letter i'm thinking of</h3>
+ -->
+		<!-- <h4>Winns:</h4> -->
+	<h2>The Psychic Game<span id="bb"><strong></strong></span></h2>
+	<h3>Wins:<span id="wins"></span></h3>
+	<h3>Losses:<span id="losses"></h3>
+	<h3>Guesses Left:<span id="gl"></span></h3>
+	<h3>Guesses:<span id="gs"></span></h3>
+
+
+    <script type="text/javascript">
+    	//Make a array of movies
+    	var letters = ["a", "b", "c", "d","e", "f", "g", "h","i", "j", "j","k", "l", "m", "n", "o","p", "q", "r", "s", "t", "u", "v", "w","x", "y", "z"];
+    	
+    	var wins = 0;
+    	var loses = 0;
+    	var guesses = [];
+    	var guessesLeft = 9;
+    	
+		var choosenLetter = letters[Math.floor(Math.random() * letters.length)];
+	
+	
+		console.log(choosenLetter)
+
+		
+		document.onkeyup = function(event) {
+			var userInput = event.key; 
+			
+			console.log(userInput);
+		
+		console.log(guesses)
+		
+
+		if (choosenLetter == userInput) {
+			wins++;
+			reset ()
+		}
+		else {
+			guesses.push(userInput)
+			guessesLeft--;
+			if (guessesLeft == 0) {
+				loses++;
+				reset ()
+			}
+		}
+			console.log(loses + " lose")
+			console.log(wins + " win")
+			console.log(guessesLeft + " gues left")
+			console.log(guesses + " guses")
+
+			var numberWins = document.getElementById("wins");
+		numberWins.innerHTML = wins;
+		var numberLoses = document.getElementById("losses");
+		numberLoses.innerHTML = loses;
+		var numberGuesses = document.getElementById("gl")
+		numberGuesses.innerHTML = guessesLeft;
+		var numberGuessArray = document.getElementById("gs");
+		numberGuessArray.innerHTML = guesses;
+
+		}
+		function reset() {
+			choosenLetter = letters[Math.floor(Math.random() * letters.length)];
+			guesses = [];
+			guessesLeft = 9;
+		}
+
+
+
+	</script>
+</body>
+</html>
